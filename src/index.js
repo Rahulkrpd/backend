@@ -1,7 +1,14 @@
+import dotenv from "dotenv"
 import express from "express"
+import connectDB from "./db/connetdb.js"
+
+dotenv.config({
+    path:'./env'
+})
 
 const app = express()
-const port = 4000
+const port = process.env.PORT || 4000
+connectDB();
 
 app.get("/", (req, res) => {
     res.send("Server is on")
@@ -9,7 +16,7 @@ app.get("/", (req, res) => {
 
 
 // some change are occurs
-app.get("/api/food",(req,res)=>{
+app.get("/api/food", (req, res) => {
     res.send("This is food end point")
 })
 
