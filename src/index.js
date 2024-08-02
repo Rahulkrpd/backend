@@ -8,6 +8,11 @@ app.get("/", (req, res) => {
 })
 
 
+// some change are occurs
+app.get("/api/food",(req,res)=>{
+    res.send("This is food end point")
+})
+
 app.listen(port, () => {
     console.log("Server is on ")
 })
