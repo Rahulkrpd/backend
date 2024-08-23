@@ -38,6 +38,7 @@ const userSchema = new mongoose.Schema({
         type: String,  // cloudinary url
 
 
+        
     },
     watchHistory: [{
         type: mongoose.Schema.Types.ObjectId,
