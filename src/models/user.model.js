@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
         type: String,  // cloudinary url
 
 
-        
+
     },
     watchHistory: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -62,11 +62,13 @@ const userSchema = new mongoose.Schema({
 
 
 
-userSchema.pre('save', async function (next) {
+userSchema.pre("save", async function (next) {
+
     if (!this.isModified("password")) return next();
-    this.password = bcrypt.hash(this.password, 10)
-    next()
-})
+    this.password = await bcrypt.hash(this.password, 10);
+
+    next();
+});
 
 
 userSchema.methods.isPasswordCorrect = async function
@@ -75,7 +77,7 @@ userSchema.methods.isPasswordCorrect = async function
 }
 
 userSchema.methods.generateAccessToken = function () {
-   return   jwt.sign(
+    return jwt.sign(
         {
             _id: this._id,
             email: this.email,
@@ -91,11 +93,11 @@ userSchema.methods.generateAccessToken = function () {
 
 
 
-userSchema.methods.generateRrefreshToken = function () { 
-    return   jwt.sign(
+userSchema.methods.generateRrefreshToken = function () {
+    return jwt.sign(
         {
             _id: this._id,
-           
+
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
