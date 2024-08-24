@@ -19,15 +19,19 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
+// route import 
 
-app.get("/", (req, res) => {
-    res.send(`Server is on port: ${port}`)
-})
+import userRouter from "./routes/user.routes.js"
 
 
-// some change are occurs
-app.get("/api/food", (req, res) => {
-    res.send("This is food end point")
-})
+// routes declaration
+app.use('/api/v1/users',userRouter)
 
 export { app }
+
+
+
+
+
+
+

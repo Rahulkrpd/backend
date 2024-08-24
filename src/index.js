@@ -21,3 +21,13 @@ connectDB()
 
 
 
+app.get("/", (req, res) => {
+    res.send(`Server is on port: ${port}`)
+})
+
+
+// some change are occurs
+app.get("/api/food", (req, res) => {
+    res.send("This is food end point")
+})
+
