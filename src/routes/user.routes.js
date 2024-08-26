@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { registerUser, login } from "../controllers/user.controller.js";
+import { registerUser } from "../controllers/user.controller.js";
 import { upload } from "../middleware/multer.middleware.js";
 
 const router = Router()
@@ -18,7 +18,7 @@ router.route("/register").post(
     ]),
     registerUser
 )
-router.route("/login").post(login)
+
 
 
 
